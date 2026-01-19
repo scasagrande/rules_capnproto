@@ -45,7 +45,10 @@ def _capnp_cc_aspect_impl(target, ctx):
     cc_includes = [
         _cc_include_full_path(ctx, include)
         for include in target[CapnpInfo].includes
-    ] + [ctx.genfiles_dir.path]
+    ] + [
+        ctx.genfiles_dir.path,
+        ctx.genfiles_dir.path + "/" + ctx.label.workspace_root  # Required when consumed from external repo
+    ]
     cc_includes_transitive = depset(
         direct = cc_includes,
         transitive = [dep[CapnpCcInfo].cc_includes_transitive for dep in ctx.rule.attr.deps],
