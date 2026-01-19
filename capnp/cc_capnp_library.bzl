@@ -1,5 +1,7 @@
 load("@rules_cc//cc:action_names.bzl", "CPP_COMPILE_ACTION_NAME")
 load("@rules_cc//cc:toolchain_utils.bzl", "find_cpp_toolchain")
+load("@rules_cc//cc/common:cc_common.bzl", "cc_common")
+load("@rules_cc//cc/common:cc_info.bzl", "CcInfo")
 load("//capnp:capnp_info.bzl", "CapnpInfo")
 load("//capnp/internal:capnp_lang_toolchain.bzl", "CapnpLangToolchainInfo")
 load("//capnp/internal:capnp_toolchain.bzl", "CapnpToolchainInfo")
@@ -135,7 +137,6 @@ capnp_cc_aspect = aspect(
         ),
     },
     fragments = ["cpp"],
-    incompatible_use_toolchain_transition = True,
     toolchains = ["@bazel_tools//tools/cpp:toolchain_type"],
 )
 
@@ -160,6 +161,5 @@ cc_capnp_library = rule(
         ),
     },
     fragments = ["cpp"],
-    incompatible_use_toolchain_transition = True,
     toolchains = ["@bazel_tools//tools/cpp:toolchain_type"],
 )

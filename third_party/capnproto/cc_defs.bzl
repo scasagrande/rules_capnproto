@@ -1,3 +1,7 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+load("@rules_cc//cc:cc_library.bzl", "cc_library")
+load("@rules_cc//cc:cc_test.bzl", "cc_test")
+
 CAPNPROTO_COPTS = [
     "--std=c++14",
     "-Wall",
@@ -14,7 +18,7 @@ CAPNPROTO_LINKOPTS = ["-lpthread"]
 CAPNPROTO_INCLUDES = ["c++/src"]
 
 def capnroto_cc_library(**kwargs):
-    native.cc_library(
+    cc_library(
         copts = CAPNPROTO_COPTS + kwargs.pop("copts", []),
         linkopts = CAPNPROTO_LINKOPTS + kwargs.pop("linkopts", []),
         includes = CAPNPROTO_INCLUDES + kwargs.pop("includes", []),
@@ -22,7 +26,7 @@ def capnroto_cc_library(**kwargs):
     )
 
 def capnroto_cc_binary(**kwargs):
-    native.cc_binary(
+    cc_binary(
         copts = CAPNPROTO_COPTS + kwargs.pop("copts", []),
         linkopts = CAPNPROTO_LINKOPTS + kwargs.pop("linkopts", []),
         includes = CAPNPROTO_INCLUDES + kwargs.pop("includes", []),
@@ -30,7 +34,7 @@ def capnroto_cc_binary(**kwargs):
     )
 
 def capnroto_cc_test(**kwargs):
-    native.cc_test(
+    cc_test(
         copts = CAPNPROTO_COPTS + kwargs.pop("copts", []),
         linkopts = CAPNPROTO_LINKOPTS + kwargs.pop("linkopts", []),
         includes = CAPNPROTO_INCLUDES + kwargs.pop("includes", []),
