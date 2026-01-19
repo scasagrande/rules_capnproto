@@ -1,0 +1,13 @@
+load("@bazel_skylib//rules:common_settings.bzl", "bool_flag")
+
+bool_flag(
+    name = "with_openssl",
+    build_setting_default = False,
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "with_openssl_setting",
+    flag_values = {":with_openssl": "true"},
+    visibility = ["//visibility:public"],
+)

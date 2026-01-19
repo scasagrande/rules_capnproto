@@ -1,5 +1,7 @@
 module(name = "rules_capnproto")
 
+bazel_dep(name = "bazel_skylib", version = "1.9.0")
+bazel_dep(name = "openssl", version = "3.5.4.bcr.0")
 bazel_dep(name = "rules_cc", version = "0.2.16")
 bazel_dep(name = "zlib", version = "1.3.1.bcr.8")
 

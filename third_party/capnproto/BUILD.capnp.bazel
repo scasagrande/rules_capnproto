@@ -675,11 +675,18 @@ capnroto_cc_library(
         "c++/src/kj/compat/readiness-io.h",
         "c++/src/kj/compat/tls.h",
     ],
+    defines = select({
+        "@rules_capnproto//:with_openssl_setting": ["KJ_HAS_OPENSSL=1"],
+        "//conditions:default": [],
+    }),
     visibility = ["//visibility:public"],
     deps = [
         ":kj",
         ":kj_async",
-    ],
+    ] + select({
+        "@rules_capnproto//:with_openssl_setting": ["@openssl"],
+        "//conditions:default": [],
+    }),
 )
 
 capnroto_cc_test(
