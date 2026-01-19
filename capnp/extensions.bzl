@@ -5,10 +5,10 @@ def _impl(_):
     http_archive(
         name = "capnproto",
         build_file = "//third_party/capnproto:BUILD.capnp.bazel",
-        sha256 = "e07446f56043c983e009038e69d18ff86a2924909f0b518ccf47eccf5ac03919",
-        strip_prefix = "capnproto-0.10.3",
+        sha256 = "c6f25940688c87ddb24e0c4e475c3213d9b044aad2ba305439cc8c224f559da6",
+        strip_prefix = "capnproto-0.10.4",
         urls = [
-            "https://github.com/capnproto/capnproto/archive/refs/tags/v0.10.3.tar.gz",
+            "https://github.com/capnproto/capnproto/archive/refs/tags/v0.10.4.tar.gz",
         ],
     )
     capnp_toolchain()
